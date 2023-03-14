@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,6 @@ Route::put('/tasks/{id}', [TaskController::class, 'update']);
 
 // Suppression d'une tâche
 Route::delete('/tasks/{id}', [TaskController::class, 'delete']);
+
+// Inscription d'un utilisateur
+Route::post('/inscription', [UserController::class, 'register']);
