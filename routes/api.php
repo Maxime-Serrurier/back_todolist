@@ -37,3 +37,6 @@ Route::delete('/tasks/{id}', [TaskController::class, 'delete']);
 
 // Inscription d'un utilisateur
 Route::post('/inscription', [UserController::class, 'register']);
+
+// Connexion d'un utilisateur
+Route::post('/connexion', [UserController::class, 'login']);
