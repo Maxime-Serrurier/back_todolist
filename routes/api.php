@@ -40,3 +40,6 @@ Route::post('/inscription', [UserController::class, 'register']);
 
 // Connexion d'un utilisateur
 Route::post('/connexion', [UserController::class, 'login']);
+
+// Déconnexion d'un utilisateur
+Route::post('/deconnexion', [UserController::class, 'logout']);

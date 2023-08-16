@@ -29,11 +29,14 @@ class UserController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
+            $token = $user->createToken($user->email . '_Token')->plainTextToken;
+
             return response()->json([
                 'status' => 200,
                 'pseudo' => $user->pseudo,
                 'message' => 'Registered Successfully',
                 'id' => $user->id,
+                'token' => $token,
             ]);
         }
     }
@@ -58,12 +61,24 @@ class UserController extends Controller
                 ]);
             } else {
 
+                $token = $user->createToken($user->email . '_Token', [''])->plainTextToken;
+
                 return response()->json([
                     'status' => 200,
                     'pseudo' => $user->pseudo,
+                    'token' => $token,
                     'message' => 'Logged In Successfully',
                 ]);
             }
         }
+    }
+
+    public function logout()
+    {
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Logged Out Successfully',
+        ]);
     }
 }
