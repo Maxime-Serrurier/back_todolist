@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
+
 class UserController extends Controller
 {
     public function register(Request $request)
@@ -73,9 +75,9 @@ class UserController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(User $user)
     {
-        auth()->user()->tokens()->delete();
+        $user->tokens()->delete();
         return response()->json([
             'status' => 200,
             'message' => 'Logged Out Successfully',
