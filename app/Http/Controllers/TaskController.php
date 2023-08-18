@@ -75,7 +75,8 @@ class TaskController extends Controller
 
         // validation des données
         $validator = Validator::make($request->input(), [
-            'title' => ['required', 'filled']
+            'title' => ['required', 'filled'],
+            'status' => ['required', 'filled'],
         ]);
 
         if ($validator->fails()) {
@@ -84,7 +85,9 @@ class TaskController extends Controller
 
         // si tout est OK, on peut mettre à jour l'objet
         $title = $request->input('title');
+        $status = $request->input('status');
         $task->title = $title;
+        $task->status = $status;
 
         if ($task->save()) {
             return response()->json($task);
