@@ -53,11 +53,6 @@ class TaskController extends Controller
         // récupération du champ title depuis la requête
         $title = $request->input('title');
 
-        // si pas de titre : erreur
-        /*if (!$title || empty($title)) {
-            return response(null, 400);
-        }*/
-
         $task = new Task();
         $task->title = $title;
 
